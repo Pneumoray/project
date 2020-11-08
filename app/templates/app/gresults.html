@@ -1,7 +1,14 @@
-{% extends 'base.html' %}
 {% load static %}
 
 {% block content %}
+<!DOCTYPE html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pneum-o-Ray</title>
+  <link rel='shortcut icon' href='../img/pneumoray-logo2.png'/>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;900&display=swap" rel="stylesheet">
 <style>
 
 body {
@@ -106,7 +113,6 @@ p {
     width: 493.2px;
   }
 }
- 
 </style>
 
     <a href="{% url 'home' %}"><img src="https://pneumoray.s3.us-east-2.amazonaws.com/static/img/pneumoray-logo.png"/></a>
