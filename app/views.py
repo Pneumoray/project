@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .forms import *
 from .models import *
 import io
@@ -14,7 +14,9 @@ from pneumoray.settings import BASE_DIR
 
 def get_model():
     global model
-    model = keras.models.load_model("static/img/pneum.h5")
+    # from_here = 'https://pneumoray.s3.us-east-2.amazonaws.com/static/img/pneum.h5'
+    # static/img/pneum.h5
+    model = keras.models.load_model('static/img/pneum.h5')
     print("Model Loaded")
 
 
@@ -75,6 +77,16 @@ def home(request):
             file_path = "{}{}".format(BASE_DIR, obj.xray.url)
             print(file_path)
             print('prediction: ', pneum_predict(file_path, model))
+            endresult = pneum_predict(file_path, model)
+            if endresult == 0:
+                print('result negative')
+                return redirect('gresults')
+            else:
+                print('image processed')
+                print('- - - - - - - -')
+                print('result positive')
+                return redirect('results')
+
 
         
         file_path = "{}{}".format(BASE_DIR, obj.xray.url)
@@ -90,10 +102,20 @@ def home(request):
         # print(pneum_predict('/Users/vladyslav/Desktop/pneumoray/media/xrays/NORMAL2-IM-0341-0001.jpeg', model))
         # print(pneum_predict('/Users/vladyslav/Desktop/pneumoray/media/xrays/person24_virus_58.jpeg', model))
         # file_path = os.path.join(BASE_DIR, str(xray.url))
-        print(BASE_DIR)
+        # print(BASE_DIR)
         return render(request, 'app/home.html', context)
     
     return render(request, 'app/home.html', context)
+
+def results(request):
+    context = {}
+
+    return render(request, 'app/results.html', context)
+
+def gresults(request):
+    context = {}
+
+    return render(request, 'app/gresults.html', context)
 
 def about(request):
     context = {}

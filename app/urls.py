@@ -7,6 +7,8 @@ urlpatterns = [
     path('', home, name='home'),
     path('about/', about, name='about'),
     path('check/', check, name='check'),
+    path('results/', results, name='results'),
+    path('result/', gresults, name='gresults'),
 ]
 
 if settings.DEBUG:
