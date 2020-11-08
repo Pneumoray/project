@@ -1,0 +1,1 @@
+web: gunicorn pneumoray.wsgi --log-file -
