@@ -2,3 +2,5 @@
 vlad/
 .env
 db.sqlite3
+pneumoray/__pycache__
+app/__pycache__
