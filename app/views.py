@@ -78,7 +78,15 @@ def home(request):
             print(file_path)
             print('prediction: ', pneum_predict(file_path, model))
             endresult = pneum_predict(file_path, model)
+            all_objs = Document.objects.all()
+            if all_objs.exists():
+                for a in all_objs:
+                    a.xray.delete()
+                all_objs.delete()
+                print('------------- images deleted -------------')
             if endresult == 0:
+                print('image processed')
+                print('- - - - - - - -')
                 print('result negative')
                 return redirect('gresults')
             else:
