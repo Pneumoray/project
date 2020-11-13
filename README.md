@@ -1,6 +1,6 @@
 ## Server-Side for Pneumoray
 
-This is the server side application serving [pneumoray.tech](www.pneumoray.tech)
+This is the server side application serving [pneumoray.tech](https://www.pneumoray.tech/)
 
 ## Tech Stack
 
