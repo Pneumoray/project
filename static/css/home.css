@@ -166,6 +166,8 @@ span {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
+    display: block;
+    margin: 10;
     height: 90%;
   }
 }
